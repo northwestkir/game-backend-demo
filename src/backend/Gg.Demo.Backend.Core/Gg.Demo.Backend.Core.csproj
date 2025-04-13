@@ -4,27 +4,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ProtoRoot>..\protos</ProtoRoot>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.1.2" />
     <PackageReference Include="Grpc.Net.Client" Version="2.70.0" />
     <PackageReference Include="Grpc.Net.ClientFactory" Version="2.70.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.30.2" />
-    <PackageReference Include="Grpc.Tools" Version="2.71.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
     <PackageReference Include="Microsoft.Orleans.Runtime" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Gg.Demo.Backend.Abstractions\Gg.Demo.Backend.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Protobuf Include="..\protos\openmatch\messages.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
-    <Protobuf Include="..\protos\openmatch\frontend.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
-    <Protobuf Include="..\protos\google\rpc\status.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
+    <ProjectReference Include="..\Gg.Demo.Matchmaking\Gg.Demo.Matchmaking.csproj" />
   </ItemGroup>
 
 </Project>
