@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.FrontEnd.Common", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.FrontEnd.Core", "..\Gg.Demo.FrontEnd.Core\Gg.Demo.FrontEnd.Core.csproj", "{4C67A540-38D1-424D-8959-75E5F0EF0B90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gc.Demo.Matchmaking.Core", "..\Gc.Demo.Matchmaking.Core\Gc.Demo.Matchmaking.Core.csproj", "{28C70E7F-3FD0-40A7-9280-E505B3A6DFE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4C67A540-38D1-424D-8959-75E5F0EF0B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C67A540-38D1-424D-8959-75E5F0EF0B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C67A540-38D1-424D-8959-75E5F0EF0B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C70E7F-3FD0-40A7-9280-E505B3A6DFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C70E7F-3FD0-40A7-9280-E505B3A6DFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C70E7F-3FD0-40A7-9280-E505B3A6DFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C70E7F-3FD0-40A7-9280-E505B3A6DFE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
