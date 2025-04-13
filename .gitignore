@@ -25,6 +25,7 @@ bld/
 .vs
 .vscode
 .idea
+.user
 
 # .NET Core
 project.lock.json
@@ -55,3 +56,7 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+/src/backend/Gg.Demo.Backend.Host/Gg.Demo.Backend.Host.csproj.user
+/src/backend/Gg.Demo.FrontEnd.Host/Gg.Demo.FrontEnd.Host.csproj.user
+/src/backend/Gg.Demo.Matchmaking.Director/Gg.Demo.Matchmaking.Director.csproj.user
+/src/backend/Gg.Demo.Matchmaking.Function/Gg.Demo.Matchmaking.Function.csproj.user
