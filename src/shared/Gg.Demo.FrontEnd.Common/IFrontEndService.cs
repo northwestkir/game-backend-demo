@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading;
-using MagicOnion;
-
+﻿using MagicOnion;
+using MessagePack;
 namespace Gg.Demo.FrontEnd.Common
 {
     public interface IFrontEndService: IService<IFrontEndService>
@@ -12,11 +10,14 @@ namespace Gg.Demo.FrontEnd.Common
         UnaryResult<MatchmakingStateDto> GetMatchmakingState();
     }
 
+    [MessagePackObject]
     public class MatchmakingStateDto
     {
-        public string TicketId { get; set; }
+        [Key(0)]
+        public string? TicketId { get; set; }
+        [Key(1)]
         public MatchmakingStatusDto Status { get; set; }
-        
+        [Key(2)]
         public string? Endpoint { get; set; }
     }
 
@@ -28,10 +29,14 @@ namespace Gg.Demo.FrontEnd.Common
         Cancelling
     }
 
+    [MessagePackObject]
     public class StartMatchmakingCommand
     {
+        [Key(0)]
         public string Geo { get; set; }
+        [Key(1)]
         public string GameMode { get; set; }
+        [Key(2)]
         public string Map { get; set; }
     }
 }

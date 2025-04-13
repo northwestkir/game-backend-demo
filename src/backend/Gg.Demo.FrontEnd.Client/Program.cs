@@ -31,8 +31,10 @@ class Program
 
         try
         {
-            // Call the service.
+            var newMatchmaking = await client.StartMatchmaking(new StartMatchmakingCommand { Map = "map1", GameMode = "tutor", Geo = "nl" });
             var result = await client.GetMatchmakingState();
+            var cancelled = await client.CancelMatchmaking();
+
             Console.WriteLine($"Matchmaking result: {result.Status}");
         }
         catch (RpcException ex)
