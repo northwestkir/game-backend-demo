@@ -42,6 +42,7 @@ var app = builder.Build();
 // Use authentication and authorization middleware
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapMagicOnionService<MagicOnionFrontEndService>();
 
 

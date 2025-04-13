@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.FrontEnd.Client", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{2C59778B-6662-4E09-BE21-E8AE60AD9667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Matchmaking.Director", "Gg.Demo.Matchmaking.Director\Gg.Demo.Matchmaking.Director.csproj", "{58646792-305C-4D98-A20C-2FC4E5AEA3E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Matchmaking.Function", "Gg.Demo.Matchmaking.Function\Gg.Demo.Matchmaking.Function.csproj", "{4796314D-DF7D-4E7B-8F0A-EF401521BF2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{EE1EDA29-7C93-4A66-AD58-317D47E325B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE1EDA29-7C93-4A66-AD58-317D47E325B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE1EDA29-7C93-4A66-AD58-317D47E325B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58646792-305C-4D98-A20C-2FC4E5AEA3E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58646792-305C-4D98-A20C-2FC4E5AEA3E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58646792-305C-4D98-A20C-2FC4E5AEA3E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58646792-305C-4D98-A20C-2FC4E5AEA3E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4796314D-DF7D-4E7B-8F0A-EF401521BF2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4796314D-DF7D-4E7B-8F0A-EF401521BF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4796314D-DF7D-4E7B-8F0A-EF401521BF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4796314D-DF7D-4E7B-8F0A-EF401521BF2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +73,8 @@ Global
 		{9D94DA9B-111B-4506-9684-34BC8B310593} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
 		{94BFB211-58D1-4977-ABAB-0404ABFD55F2} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
 		{EE1EDA29-7C93-4A66-AD58-317D47E325B4} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
+		{58646792-305C-4D98-A20C-2FC4E5AEA3E7} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
+		{4796314D-DF7D-4E7B-8F0A-EF401521BF2A} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D891195-BB26-431F-B112-561E5E4D993D}
