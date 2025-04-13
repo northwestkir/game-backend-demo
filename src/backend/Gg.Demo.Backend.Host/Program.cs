@@ -1,6 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+builder.Host.UseOrleans(static siloBuilder =>
+{
+    siloBuilder.UseLocalhostClustering();
+    siloBuilder.AddMemoryGrainStorage("urls");
+});
 
-app.Run();
+using var app = builder.Build();

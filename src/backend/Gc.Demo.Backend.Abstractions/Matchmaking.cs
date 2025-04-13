@@ -1,13 +1,12 @@
-using System;
+﻿namespace Gg.Demo.Backend.Abstractions;
 
-namespace Gc.Demo.Matchmaking.Core;
-
-public interface IMatchmakerFrontEnd
+public interface IMatchmakingGrain : IGrainWithGuidKey
 {
     Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request, CancellationToken cancellationToken);
     Task<MatchmakingState> CancelMatchmaking(string UserId, CancellationToken cancellationToken);
     Task<MatchmakingState> GetMatchmakingState(string UserId, CancellationToken cancellationToken);
 }
+
 
 public class MatchmakingRequest
 {
@@ -33,3 +32,4 @@ public enum MatchmakingStatus
     Cancelled,
     Error,
 }
+
