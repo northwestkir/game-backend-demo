@@ -6,9 +6,9 @@ public interface IMatchmakingGrain : IGrainWithGuidKey
     [Alias(nameof(StartMatchmaking))]
     Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request, CancellationToken cancellationToken);
     [Alias(nameof(CancelMatchmaking))]
-    Task<MatchmakingState> CancelMatchmaking(string UserId, CancellationToken cancellationToken);
+    Task<MatchmakingState> CancelMatchmaking(CancellationToken cancellationToken);
     [Alias(nameof(GetMatchmakingState))]
-    Task<MatchmakingState> GetMatchmakingState(string UserId, CancellationToken cancellationToken);
+    Task<MatchmakingState> GetMatchmakingState(CancellationToken cancellationToken);
 }
 
 [GenerateSerializer, Alias(nameof(MatchmakingRequest))]
@@ -37,11 +37,10 @@ public class MatchmakingState
 
 public enum MatchmakingStatus
 {
+    DoesNotExist,
     Pending,
-    Matched,
     GameSessionFound,
     Cancelling,
-    Cancelled,
     Error,
 }
 

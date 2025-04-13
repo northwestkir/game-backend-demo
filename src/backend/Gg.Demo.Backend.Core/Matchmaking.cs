@@ -1,130 +1,57 @@
 ﻿using Gg.Demo.Backend.Abstractions;
-using Grpc.Net.Client;
+
 using Microsoft.Extensions.Logging;
-using OpenMatch;
-using System.Text.Json;
 
 namespace Gg.Demo.Backend.Core;
 
-public class MatchmakingGrain : IMatchmakingGrain
+public class MatchmakingGrain(
+    OpenMatchFrontendClient client,
+    [PersistentState("matchmaking", "matchmakingStore")] IPersistentState<MatchmakingState> matchmakingState,
+    ILogger<MatchmakingGrain> logger) : IMatchmakingGrain
 {
-    private readonly GrpcChannel _channel;
-    private readonly FrontendService.FrontendServiceClient _client;
-    private readonly ILogger<MatchmakingGrain> _logger;
-    private readonly Dictionary<string, string> _ticketIds = new();
-
-    public MatchmakingGrain(ILogger<MatchmakingGrain> logger)
-    {
-        _logger = logger;
-        _channel = GrpcChannel.ForAddress("http://open-match-frontend:51504");
-        _client = new FrontendService.FrontendServiceClient(_channel);
-    }
-
     public async Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request, CancellationToken cancellationToken)
     {
-        try
+        Guid userId = this.GetPrimaryKey();
+        logger.LogDebug("Starting matchmaking for user {UserId}", userId);
+        var currentState = matchmakingState.State;
+        if (currentState.State != MatchmakingStatus.DoesNotExist)
         {
-            var ticket = new Ticket
-            {
-                SearchFields = new SearchFields
-                {
-                    Tags = { request.GameMode, request.Map },
-                    StringArgs = { { "geo", request.Geo } }
-                }
-            };
-
-            var createTicketRequest = new CreateTicketRequest { Ticket = ticket };
-            var response = await _client.CreateTicketAsync(createTicketRequest, cancellationToken: cancellationToken);
-
-            _ticketIds[request.UserId] = response.Id;
-
-            return new MatchmakingState
-            {
-                TicketId = response.Id,
-                State = MatchmakingStatus.Pending
-            };
+            //ask: why log debug but not error?
+            logger.LogDebug("Matchmaking already in progress for user {UserId}", userId);
+            return currentState;
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Failed to create matchmaking ticket for user {UserId}", request.UserId);
-            return new MatchmakingState
-            {
-                TicketId = string.Empty,
-                State = MatchmakingStatus.Error
-            };
-        }
+        var result = await client.StartMatchmaking(request, cancellationToken);
+        matchmakingState.State = result;
+        logger.LogDebug("Matchmaking started for user {UserId}", userId);
+        return result;
     }
 
-    public async Task<MatchmakingState> CancelMatchmaking(string userId, CancellationToken cancellationToken)
+    public async Task<MatchmakingState> CancelMatchmaking(CancellationToken cancellationToken)
     {
-        try
+        Guid userId = this.GetPrimaryKey();
+        if(matchmakingState.State.State == MatchmakingStatus.DoesNotExist)
         {
-            if (!_ticketIds.TryGetValue(userId, out var ticketId))
-            {
-                return new MatchmakingState
-                {
-                    TicketId = string.Empty,
-                    State = MatchmakingStatus.Cancelled
-                };
-            }
-
-            var deleteTicketRequest = new DeleteTicketRequest { TicketId = ticketId };
-            await _client.DeleteTicketAsync(deleteTicketRequest, cancellationToken: cancellationToken);
-
-            _ticketIds.Remove(userId);
-
-            return new MatchmakingState
-            {
-                TicketId = ticketId,
-                State = MatchmakingStatus.Cancelled
-            };
+            logger.LogDebug("Matchmaking does not exist for {UserId}", userId);
+            return matchmakingState.State;
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Failed to cancel matchmaking for user {UserId}", userId);
-            return new MatchmakingState
-            {
-                TicketId = string.Empty,
-                State = MatchmakingStatus.Error
-            };
-        }
+        var currentState = matchmakingState.State;
+        logger.LogDebug("Cancelling matchmaking for user {UserId}", userId);
+        var ticketId = currentState.TicketId;
+        var result = await client.CancelMatchmaking(ticketId, cancellationToken);
+        matchmakingState.State = result;
+        logger.LogDebug("Matchmaking cancelled for user {UserId}", userId);
+        return result;
     }
 
-    public async Task<MatchmakingState> GetMatchmakingState(string userId, CancellationToken cancellationToken)
+    public async Task<MatchmakingState> GetMatchmakingState(CancellationToken cancellationToken)
     {
-        try
-        {
-            if (!_ticketIds.TryGetValue(userId, out var ticketId))
-            {
-                return new MatchmakingState
-                {
-                    TicketId = string.Empty,
-                    State = MatchmakingStatus.Error
-                };
-            }
-
-            var getTicketRequest = new GetTicketRequest { TicketId = ticketId };
-            var response = await _client.GetTicketAsync(getTicketRequest, cancellationToken: cancellationToken);
-
-            var state = response.Assignment != null
-                ? MatchmakingStatus.GameSessionFound
-                : MatchmakingStatus.Pending;
-
-            return new MatchmakingState
-            {
-                TicketId = ticketId,
-                State = state,
-                Endpoint = response.Assignment?.Connection
-            };
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Failed to get matchmaking state for user {UserId}", userId);
-            return new MatchmakingState
-            {
-                TicketId = string.Empty,
-                State = MatchmakingStatus.Error
-            };
-        }
+        Guid userId = this.GetPrimaryKey();
+        logger.LogDebug("Getting matchmaking state for {UserId}", userId);    
+        var currentState = matchmakingState.State;
+        var ticketId = currentState.TicketId;
+        var result = await client.GetMatchmakingState(ticketId, cancellationToken);
+        matchmakingState.State = result;
+        logger.LogDebug("Matchmaking state for {UserId} is {State}", userId, result.State);
+        return result;
     }
 }
