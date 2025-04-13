@@ -1,0 +1,24 @@
+replicaCount: 1
+namespace: demo-matchmaker
+
+image:
+  repository: gg-demo-director
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
+
+openmatch:
+  backend:
+    service: "http://open-match-backend.open-match.svc.cluster.local:51505"

@@ -1,0 +1,28 @@
+namespace: demo-game
+replicaCount: 1
+
+image:
+  repository: gg-demo-frontend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
+
+jwt:
+  key: "your-secret-key-here-must-be-at-least-16-characters"
+  issuer: "your-issuer"
+  audience: "your-audience"
+
+backend:
+  service: "http://backend:80" 

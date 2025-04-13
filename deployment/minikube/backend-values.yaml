@@ -1,0 +1,32 @@
+namespace: demo-game
+replicaCount: 1
+
+image:
+  repository: gg-demo-backend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
+
+orleans:
+  clustering:
+    provider: Development
+  persistence:
+    provider: Memory
+  dashboard:
+    enabled: true
+    port: 8080 
+openmatch:  
+  frontend:
+    address: "http://open-match-frontend.open-match.svc.cluster.local:51504" 

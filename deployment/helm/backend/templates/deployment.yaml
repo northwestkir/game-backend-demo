@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.targetPort }}
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: OpenMatchFrontEnd__Address
+              value: {{ .Values.openmatch.frontend.address | quote }}
+            - name: ORLEANS_CLUSTERING_PROVIDER
+              value: {{ .Values.orleans.clustering.provider }}
+            - name: ORLEANS_PERSISTENCE_PROVIDER
+              value: {{ .Values.orleans.persistence.provider }}
+            - name: ORLEANS_DASHBOARD_ENABLED
+              value: {{ .Values.orleans.dashboard.enabled | quote }}
+            - name: ORLEANS_DASHBOARD_PORT
+              value: {{ .Values.orleans.dashboard.port | quote }} 
