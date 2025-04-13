@@ -1,6 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Gg.Demo.Allocator.Abstractions;
+using Gg.Demo.Matchmaking.Director;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureOpenMatchBackend();
+builder.Services.AddLocalGameServerAllocator("LocalGameServer");
+
+var app = builder.Build();
 
 app.Run();

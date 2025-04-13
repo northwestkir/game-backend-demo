@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Matchmaking.Functio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Matchmaking", "Gg.Demo.Matchmaking\Gg.Demo.Matchmaking.csproj", "{69514D00-F75B-48AE-AD51-CCAB26543D25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Allocator.Abstractions", "Gg.Demo.Allocator.Abstractions\Gg.Demo.Allocator.Abstractions.csproj", "{0AE5DBC5-63A9-4622-A78A-A26783D37C47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{69514D00-F75B-48AE-AD51-CCAB26543D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69514D00-F75B-48AE-AD51-CCAB26543D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69514D00-F75B-48AE-AD51-CCAB26543D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE5DBC5-63A9-4622-A78A-A26783D37C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE5DBC5-63A9-4622-A78A-A26783D37C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE5DBC5-63A9-4622-A78A-A26783D37C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE5DBC5-63A9-4622-A78A-A26783D37C47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
