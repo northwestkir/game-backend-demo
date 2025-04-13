@@ -6,17 +6,17 @@ namespace Gg.Demo.FrontEnd.Core;
 
 public class MagicOnionFrontEndService : ServiceBase<IFrontEndService>, IFrontEndService
 {
-    public UnaryResult<MatchmakingState> GetMatchmakingState()
+    public UnaryResult<MatchmakingStateDto> GetMatchmakingState()
     {
         throw new NotImplementedException();
     }
 
-    public UnaryResult<MatchmakingState> StartMatchmaking(StartMatchmakingCommand cmd)
+    public UnaryResult<MatchmakingStateDto> StartMatchmaking(StartMatchmakingCommand cmd)
     {
         throw new NotImplementedException();
     }
 
-    public UnaryResult<MatchmakingState> StopMatchmaking()
+    public UnaryResult<MatchmakingStateDto> CancelMatchmaking()
     {
         throw new NotImplementedException();
     }

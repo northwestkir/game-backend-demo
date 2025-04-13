@@ -4,15 +4,28 @@ namespace Gg.Demo.FrontEnd.Common
 {
     public interface IFrontEndService: IService<IFrontEndService>
     {
-        UnaryResult<MatchmakingState> StartMatchmaking(StartMatchmakingCommand cmd);
-        UnaryResult<MatchmakingState> StopMatchmaking();
+        UnaryResult<MatchmakingStateDto> StartMatchmaking(StartMatchmakingCommand cmd);
+        UnaryResult<MatchmakingStateDto> CancelMatchmaking();
 
-        UnaryResult<MatchmakingState> GetMatchmakingState();
+        UnaryResult<MatchmakingStateDto> GetMatchmakingState();
     }
 
-    public class MatchmakingState
+    public class MatchmakingStateDto
     {
+        public string TicketId { get; set; }
+        public MatchmakingStatusDto Status { get; set; }
+        
+        public string? Endpoint { get; set; }
+    }
 
+    public enum MatchmakingStatusDto
+    {
+        Pending,
+        Matched,
+        GameSessionFound,
+        Cancelling,
+        Cancelled,
+        Error,
     }
 
     public class StartMatchmakingCommand
