@@ -19,6 +19,8 @@
     <Protobuf Include="..\protos\openmatch\messages.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
     <Protobuf Include="..\protos\openmatch\frontend.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
     <Protobuf Include="..\protos\openmatch\backend.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
+    <Protobuf Include="..\protos\openmatch\query.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
+    <Protobuf Include="..\protos\openmatch\matchfunction.proto" GrpcServices="Server" AdditionalImportDirs="..\protos" />
     <Protobuf Include="..\protos\google\rpc\status.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ using Gg.Demo.Matchmaking.Director;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.ConfigureOpenMatchBackend();
+builder.Services.ConfigureDirector();
 builder.Services.AddLocalGameServerAllocator("LocalGameServer");
 
 var app = builder.Build();

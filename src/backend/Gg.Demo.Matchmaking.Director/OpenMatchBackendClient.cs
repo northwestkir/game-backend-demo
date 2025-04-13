@@ -8,15 +8,25 @@ namespace Gg.Demo.Matchmaking.Director;
 
 public class OpenMatchBackendClient(
     BackendService.BackendServiceClient client,
-    IOptions<MatchProfile> matchProfile,
     IOptions<FunctionConfig> functionConfig,
     ILogger<OpenMatchBackendClient> logger)
 {
-    public async IAsyncEnumerable<MatchInfo> FetchMatches(string pool, [EnumeratorCancellation] CancellationToken cancellationToken)
+    public async IAsyncEnumerable<MatchInfo> FetchMatches(IEnumerable<MatchProfile> profiles, [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        foreach (var profile in profiles)
+        {
+            await foreach (var match in FetchMatches(profile, cancellationToken))
+            {
+                yield return match;
+            }
+        }
+    }
+    
+    private async IAsyncEnumerable<MatchInfo> FetchMatches(MatchProfile profile, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         var request = new FetchMatchesRequest
         {
-            Profile = matchProfile.Value,
+            Profile = profile,
             Config = functionConfig.Value
         };
         var response = client.FetchMatches(request, cancellationToken: cancellationToken);

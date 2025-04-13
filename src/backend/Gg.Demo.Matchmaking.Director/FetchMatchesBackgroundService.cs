@@ -2,15 +2,16 @@ using Gg.Demo.Allocator.Abstractions;
 
 namespace Gg.Demo.Matchmaking.Director;
 
-public class FetchMatchesBackgroundService(OpenMatchBackendClient client, IGameServerAllocator gameServerAllocator, ILogger<FetchMatchesBackgroundService> logger) : BackgroundService
+public class FetchMatchesBackgroundService(OpenMatchBackendClient client, IProfileRepository profileRepository, IGameServerAllocator gameServerAllocator, ILogger<FetchMatchesBackgroundService> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
         {
+            var profiles = profileRepository.GetProfiles();
             try
             {
-                await foreach (var match in client.FetchMatches("default", stoppingToken))
+                await foreach (var match in client.FetchMatches(profiles, stoppingToken))
                 {
                     await ProcessMatch(match, stoppingToken);
                 }
