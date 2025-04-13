@@ -1,0 +1,80 @@
+// Copyright 2019 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+package openmatch;
+option go_package = "open-match.dev/open-match/pkg/pb";
+option csharp_namespace = "OpenMatch";
+
+import "messages.proto";
+
+message QueryTicketsRequest {
+  // The Pool representing the set of Filters to be queried.
+  Pool pool = 1;
+}
+
+message QueryTicketsResponse {
+  // Tickets that meet all the filtering criteria requested by the pool.
+  repeated Ticket tickets = 1;
+}
+
+message QueryTicketIdsRequest {
+  // The Pool representing the set of Filters to be queried.
+  Pool pool = 1;
+}
+
+message QueryTicketIdsResponse {
+  // TicketIDs that meet all the filtering criteria requested by the pool.
+  repeated string ids = 1;
+}
+
+// BETA FEATURE WARNING:  This Request messages are not finalized and 
+// still subject to possible change or removal.
+message QueryBackfillsRequest {
+  // The Pool representing the set of Filters to be queried.
+  Pool pool = 1;
+}
+
+// BETA FEATURE WARNING:  This Request messages are not finalized and 
+// still subject to possible change or removal.
+message QueryBackfillsResponse {
+  // Backfills that meet all the filtering criteria requested by the pool.
+  repeated Backfill backfills = 1;
+}
+
+// The QueryService service implements helper APIs for Match Function to query Tickets from state storage.
+service QueryService {
+  // QueryTickets gets a list of Tickets that match all Filters of the input Pool.
+  //   - If the Pool contains no Filters, QueryTickets will return all Tickets in the state storage.
+  // QueryTickets pages the Tickets by `queryPageSize` and stream back responses.
+  //   - queryPageSize is default to 1000 if not set, and has a minimum of 10 and maximum of 10000.
+  rpc QueryTickets(QueryTicketsRequest) returns (stream QueryTicketsResponse) {
+    
+  }
+
+  // QueryTicketIds gets the list of TicketIDs that meet all the filtering criteria requested by the pool.
+  //   - If the Pool contains no Filters, QueryTicketIds will return all TicketIDs in the state storage.
+  // QueryTicketIds pages the TicketIDs by `queryPageSize` and stream back responses.
+  //   - queryPageSize is default to 1000 if not set, and has a minimum of 10 and maximum of 10000.
+  rpc QueryTicketIds(QueryTicketIdsRequest) returns (stream QueryTicketIdsResponse) {
+    
+  }
+
+  // QueryBackfills gets a list of Backfills.
+  // BETA FEATURE WARNING:  This call and the associated Request and Response
+  // messages are not finalized and still subject to possible change or removal.
+  rpc QueryBackfills(QueryBackfillsRequest) returns (stream QueryBackfillsResponse) {
+    
+  }
+}

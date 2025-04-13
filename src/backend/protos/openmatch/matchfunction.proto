@@ -1,0 +1,42 @@
+// Copyright 2019 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+package openmatch;
+option go_package = "open-match.dev/open-match/pkg/pb";
+option csharp_namespace = "OpenMatch";
+
+import "messages.proto";
+
+message RunRequest {
+  // A MatchProfile defines constraints of Tickets in a Match and shapes the Match proposed by the MatchFunction.
+  MatchProfile profile = 1;
+}
+
+message RunResponse {
+  // A Proposal represents a Match candidate that satifies the constraints defined in the input Profile.
+  // A valid Proposal response will contain at least one ticket.
+  Match proposal = 1;
+}
+
+// The MatchFunction service implements APIs to run user-defined matchmaking logics.
+service MatchFunction {
+  // DO NOT CALL THIS FUNCTION MANUALLY. USE backend.FetchMatches INSTEAD.
+  // Run pulls Tickets that satisfy Profile constraints from QueryService,
+  // runs matchmaking logic against them, then constructs and streams back
+  // match candidates to the Backend service.
+  rpc Run(RunRequest) returns (stream RunResponse) {
+    
+  }
+}
