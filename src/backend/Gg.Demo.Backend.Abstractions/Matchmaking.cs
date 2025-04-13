@@ -4,11 +4,11 @@
 public interface IMatchmakingGrain : IGrainWithGuidKey
 {
     [Alias(nameof(StartMatchmaking))]
-    Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request, CancellationToken cancellationToken);
+    Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request);
     [Alias(nameof(CancelMatchmaking))]
-    Task<MatchmakingState> CancelMatchmaking(CancellationToken cancellationToken);
+    Task<MatchmakingState> CancelMatchmaking();
     [Alias(nameof(GetMatchmakingState))]
-    Task<MatchmakingState> GetMatchmakingState(CancellationToken cancellationToken);
+    Task<MatchmakingState> GetMatchmakingState();
 }
 
 [GenerateSerializer, Alias(nameof(MatchmakingRequest))]

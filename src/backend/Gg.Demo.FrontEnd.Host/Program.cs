@@ -1,10 +1,16 @@
 
+using Gg.Demo.FrontEnd.Core;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMagicOnion(); // Add this line(MagicOnion.Server)
+builder.Services.AddMagicOnion();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddOrleansClient(orleans => orleans
+    .UseLocalhostClustering(serviceId: "backend", clusterId: "dev"));
 
 var app = builder.Build();
 
-app.MapMagicOnionService(); // Add this line
+app.MapMagicOnionService<MagicOnionFrontEndService>(); 
 
 app.Run();

@@ -15,7 +15,9 @@ public class MagicOnionFrontEndService(IClusterClient client, IHttpContextAccess
         var userId = GetUserId();
         
         var grain = client.GetGrain<IMatchmakingGrain>(userId);
-        var state = await grain.GetMatchmakingState(cancellationToken);
+        using var grainCts = new GrainCancellationTokenSource();
+        
+        var state = await grain.GetMatchmakingState();
         return new MatchmakingStateDto
         {
             TicketId = state.TicketId,
@@ -29,7 +31,8 @@ public class MagicOnionFrontEndService(IClusterClient client, IHttpContextAccess
         var userId = GetUserId();
         var cancellationToken = Context.CallContext.CancellationToken;
         var grain = client.GetGrain<IMatchmakingGrain>(userId);
-        var state = await grain.StartMatchmaking(Convert(cmd), cancellationToken);
+        using var grainCts = new GrainCancellationTokenSource();
+        var state = await grain.StartMatchmaking(Convert(cmd));
         return new MatchmakingStateDto
         {
             TicketId = state.TicketId,
@@ -43,7 +46,8 @@ public class MagicOnionFrontEndService(IClusterClient client, IHttpContextAccess
         var userId = GetUserId();
         var cancellationToken = Context.CallContext.CancellationToken;
         var grain = client.GetGrain<IMatchmakingGrain>(userId);
-        var state = await grain.CancelMatchmaking(cancellationToken);
+        
+        var state = await grain.CancelMatchmaking();
         return new MatchmakingStateDto
         {
             TicketId = state.TicketId,

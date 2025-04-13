@@ -9,8 +9,9 @@ public class MatchmakingGrain(
     [PersistentState("matchmaking", "matchmakingStore")] IPersistentState<MatchmakingState> matchmakingState,
     ILogger<MatchmakingGrain> logger) : IMatchmakingGrain
 {
-    public async Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request, CancellationToken cancellationToken)
+    public async Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request)
     {
+        var cancellationToken = CancellationToken.None;
         Guid userId = this.GetPrimaryKey();
         logger.LogDebug("Starting matchmaking for user {UserId}", userId);
         var currentState = matchmakingState.State;
@@ -26,8 +27,9 @@ public class MatchmakingGrain(
         return result;
     }
 
-    public async Task<MatchmakingState> CancelMatchmaking(CancellationToken cancellationToken)
+    public async Task<MatchmakingState> CancelMatchmaking()
     {
+        var cancellationToken = CancellationToken.None; 
         Guid userId = this.GetPrimaryKey();
         if(matchmakingState.State.State == MatchmakingStatus.DoesNotExist)
         {
@@ -43,8 +45,9 @@ public class MatchmakingGrain(
         return result;
     }
 
-    public async Task<MatchmakingState> GetMatchmakingState(CancellationToken cancellationToken)
+    public async Task<MatchmakingState> GetMatchmakingState()
     {
+        var cancellationToken = CancellationToken.None;
         Guid userId = this.GetPrimaryKey();
         logger.LogDebug("Getting matchmaking state for {UserId}", userId);    
         var currentState = matchmakingState.State;

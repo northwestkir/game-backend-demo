@@ -8,8 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Runtime.Abstractions" Version="3.7.2" />
     <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.1.2" />
     <PackageReference Include="Grpc.Net.Client" Version="2.70.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.70.0" />
     <PackageReference Include="Google.Protobuf" Version="3.30.2" />
     <PackageReference Include="Grpc.Tools" Version="2.71.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
@@ -23,7 +25,6 @@
     <Protobuf Include="..\protos\openmatch\messages.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
     <Protobuf Include="..\protos\openmatch\frontend.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
     <Protobuf Include="..\protos\google\rpc\status.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
-    <Protobuf Include="..\protos\google\protobuf\any.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
   </ItemGroup>
 
 </Project>

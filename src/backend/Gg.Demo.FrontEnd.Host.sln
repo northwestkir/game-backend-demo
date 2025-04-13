@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.FrontEnd.Host", ".\Gg.Demo.FrontEnd.Host\Gg.Demo.FrontEnd.Host.csproj", "{9D94DA9B-111B-4506-9684-34BC8B310593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.FrontEnd.Host", "Gg.Demo.FrontEnd.Host\Gg.Demo.FrontEnd.Host.csproj", "{9D94DA9B-111B-4506-9684-34BC8B310593}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.FrontEnd.Common", "..\shared\Gg.Demo.FrontEnd.Common\Gg.Demo.FrontEnd.Common.csproj", "{BE2E0B2D-0318-4C6B-B8C3-D9007EA9FDC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.FrontEnd.Common", "..\shared\Gg.Demo.FrontEnd.Common\Gg.Demo.FrontEnd.Common.csproj", "{BE2E0B2D-0318-4C6B-B8C3-D9007EA9FDC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.FrontEnd.Core", ".\Gg.Demo.FrontEnd.Core\Gg.Demo.FrontEnd.Core.csproj", "{4C67A540-38D1-424D-8959-75E5F0EF0B90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.FrontEnd.Core", "Gg.Demo.FrontEnd.Core\Gg.Demo.FrontEnd.Core.csproj", "{4C67A540-38D1-424D-8959-75E5F0EF0B90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Backend.Host", ".\Gg.Demo.Backend.Host\Gg.Demo.Backend.Host.csproj", "{94BFB211-58D1-4977-ABAB-0404ABFD55F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.Backend.Host", "Gg.Demo.Backend.Host\Gg.Demo.Backend.Host.csproj", "{94BFB211-58D1-4977-ABAB-0404ABFD55F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Backend.Core", ".\Gg.Demo.Backend.Core\Gg.Demo.Backend.Core.csproj", "{46727539-4578-4AEC-8D34-2FF1A5AC0F55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.Backend.Core", "Gg.Demo.Backend.Core\Gg.Demo.Backend.Core.csproj", "{46727539-4578-4AEC-8D34-2FF1A5AC0F55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Backend.Abstractions", ".\Gg.Demo.Backend.Abstractions\Gg.Demo.Backend.Abstractions.csproj", "{31C6EC22-54DD-4AAA-B38D-57AB34A747B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.Backend.Abstractions", "Gg.Demo.Backend.Abstractions\Gg.Demo.Backend.Abstractions.csproj", "{31C6EC22-54DD-4AAA-B38D-57AB34A747B6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gg.Demo.FrontEnd.Client", "Gg.Demo.FrontEnd.Client\Gg.Demo.FrontEnd.Client.csproj", "{EE1EDA29-7C93-4A66-AD58-317D47E325B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{2C59778B-6662-4E09-BE21-E8AE60AD9667}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +49,18 @@ Global
 		{31C6EC22-54DD-4AAA-B38D-57AB34A747B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31C6EC22-54DD-4AAA-B38D-57AB34A747B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31C6EC22-54DD-4AAA-B38D-57AB34A747B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1EDA29-7C93-4A66-AD58-317D47E325B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1EDA29-7C93-4A66-AD58-317D47E325B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1EDA29-7C93-4A66-AD58-317D47E325B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1EDA29-7C93-4A66-AD58-317D47E325B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D94DA9B-111B-4506-9684-34BC8B310593} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
+		{94BFB211-58D1-4977-ABAB-0404ABFD55F2} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
+		{EE1EDA29-7C93-4A66-AD58-317D47E325B4} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D891195-BB26-431F-B112-561E5E4D993D}
