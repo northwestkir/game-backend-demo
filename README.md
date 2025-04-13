@@ -73,26 +73,25 @@ helm install open-match open-match/open-match \
 2. Deploy the Backend service:
 
 ```bash
-helm install backend deployment/helm/backend \
-  --namespace game-demo \
-  --create-namespace \
-  -f deployment/minikube/backend-values.yaml
+helm install backend deployment/helm/backend -f deployment/minikube/backend-values.yaml --create-namespace 
 ```
 
 3. Deploy the Frontend service:
 
 ```bash
-helm install frontend deployment/helm/frontend \
-  --namespace game-demo \
-  -f deployment/minikube/frontend-values.yaml
+helm install frontend deployment/helm/frontend -f deployment/minikube/frontend-values.yaml --create-namespace 
 ```
 
 4. Deploy the Matchmaking Director service:
 
 ```bash
-helm install director deployment/helm/director \
-  --namespace game-demo \
-  -f deployment/minikube/director-values.yaml
+helm install director deployment/helm/mm-director -f deployment/minikube/mm-director-values.yaml --create-namespace 
+```
+
+5. Deploy the Matchmaker Function service:
+
+```bash
+helm install director deployment/helm/mm-function -f deployment/minikube/mm-function-values.yaml --create-namespace 
 ```
 
 ### Accessing the Services
@@ -116,19 +115,13 @@ To update a deployment after making changes:
 
 ```bash
 # Update backend
-helm upgrade backend deployment/helm/backend \
-  --namespace game-demo \
-  -f deployment/minikube/backend-values.yaml
+helm upgrade backend deployment/helm/backend -f deployment/minikube/backend-values.yaml
 
 # Update frontend
-helm upgrade frontend deployment/helm/frontend \
-  --namespace game-demo \
-  -f deployment/minikube/frontend-values.yaml
+helm upgrade frontend deployment/helm/frontend -f deployment/minikube/frontend-values.yaml
 
 # Update director
-helm upgrade director deployment/helm/director \
-  --namespace game-demo \
-  -f deployment/minikube/director-values.yaml
+helm upgrade director deployment/helm/mm-director -f deployment/minikube/mm-director-values.yaml
 ```
 
 ### Uninstalling
@@ -139,7 +132,8 @@ To uninstall all components:
 # Uninstall game services
 helm uninstall backend -n game-demo
 helm uninstall frontend -n game-demo
-helm uninstall director -n game-demo
+helm uninstall mm-director -n demo-matchmaker
+helm uninstall mm-function -n demo-matchmaker
 
 # Uninstall OpenMatch
 helm uninstall open-match -n open-match
