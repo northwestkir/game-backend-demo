@@ -8,7 +8,7 @@ EXPOSE 8080
 
 
 # This stage is used to build the service project
-FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/backend/Gg.Demo.Matchmaking.Director/Gg.Demo.Matchmaking.Director.csproj", "src/backend/Gg.Demo.Matchmaking.Director/"]
