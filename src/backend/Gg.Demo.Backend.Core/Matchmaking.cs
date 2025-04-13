@@ -36,11 +36,11 @@ public class MatchmakingGrain : IMatchmakingGrain
             var createTicketRequest = new CreateTicketRequest { Ticket = ticket };
             var response = await _client.CreateTicketAsync(createTicketRequest, cancellationToken: cancellationToken);
 
-            _ticketIds[request.UserId] = response.Ticket.Id;
+            _ticketIds[request.UserId] = response.Id;
 
             return new MatchmakingState
             {
-                TicketId = response.Ticket.Id,
+                TicketId = response.Id,
                 State = MatchmakingStatus.Pending
             };
         }
@@ -106,7 +106,7 @@ public class MatchmakingGrain : IMatchmakingGrain
             var getTicketRequest = new GetTicketRequest { TicketId = ticketId };
             var response = await _client.GetTicketAsync(getTicketRequest, cancellationToken: cancellationToken);
 
-            var state = response.Ticket.Assignment != null
+            var state = response.Assignment != null
                 ? MatchmakingStatus.GameSessionFound
                 : MatchmakingStatus.Pending;
 
@@ -114,7 +114,7 @@ public class MatchmakingGrain : IMatchmakingGrain
             {
                 TicketId = ticketId,
                 State = state,
-                Endpoint = response.Ticket.Assignment?.Connection
+                Endpoint = response.Assignment?.Connection
             };
         }
         catch (Exception ex)

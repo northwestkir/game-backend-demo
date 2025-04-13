@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package openmatch;
+
+import "protos/google/rpc/status.proto";
+
+option go_package = "open-match.dev/open-match/pkg/pb";
+option csharp_namespace = "OpenMatch";
+
+// ... existing code ... 

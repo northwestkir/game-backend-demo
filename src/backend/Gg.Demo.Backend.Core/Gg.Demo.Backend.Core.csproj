@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ProtoRoot>..\protos</ProtoRoot>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,8 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\protos\openmatch\messages.proto" GrpcServices="Client" />
-      <Protobuf Include="..\protos\openmatch\frontend.proto" GrpcServices="Client" />
+    <Protobuf Include="..\protos\openmatch\messages.proto" GrpcServices="Client" AdditionalImportDirs="..\protos"/>
+    <Protobuf Include="..\protos\openmatch\frontend.proto" GrpcServices="Client" AdditionalImportDirs="..\protos"/>
+    <Protobuf Include="..\protos\google\rpc\status.proto" GrpcServices="Client"  AdditionalImportDirs="..\protos"/>
   </ItemGroup>
 
 </Project>
