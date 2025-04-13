@@ -20,9 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\protos\openmatch\messages.proto" GrpcServices="Client" AdditionalImportDirs="..\protos"/>
-    <Protobuf Include="..\protos\openmatch\frontend.proto" GrpcServices="Client" AdditionalImportDirs="..\protos"/>
-    <Protobuf Include="..\protos\google\rpc\status.proto" GrpcServices="Client"  AdditionalImportDirs="..\protos"/>
+    <Protobuf Include="..\protos\openmatch\messages.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
+    <Protobuf Include="..\protos\openmatch\frontend.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
+    <Protobuf Include="..\protos\google\rpc\status.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
+    <Protobuf Include="..\protos\google\protobuf\any.proto" GrpcServices="Client" AdditionalImportDirs="..\protos" />
   </ItemGroup>
 
 </Project>

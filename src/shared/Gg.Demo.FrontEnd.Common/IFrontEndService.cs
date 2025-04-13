@@ -1,4 +1,6 @@
-﻿using MagicOnion;
+﻿using System;
+using System.Threading;
+using MagicOnion;
 
 namespace Gg.Demo.FrontEnd.Common
 {
@@ -20,16 +22,16 @@ namespace Gg.Demo.FrontEnd.Common
 
     public enum MatchmakingStatusDto
     {
+        DoesNotExist,
         Pending,
-        Matched,
         GameSessionFound,
-        Cancelling,
-        Cancelled,
-        Error,
+        Cancelling
     }
 
     public class StartMatchmakingCommand
     {
-
+        public string Geo { get; set; }
+        public string GameMode { get; set; }
+        public string Map { get; set; }
     }
 }

@@ -14,8 +14,6 @@ public interface IMatchmakingGrain : IGrainWithGuidKey
 [GenerateSerializer, Alias(nameof(MatchmakingRequest))]
 public class MatchmakingRequest
 {
-    [Id(0)]
-    public required string UserId { get; init; }
     [Id(1)]
     public required string Geo { get; init; }
     [Id(2)]
@@ -40,7 +38,6 @@ public enum MatchmakingStatus
     DoesNotExist,
     Pending,
     GameSessionFound,
-    Cancelling,
-    Error,
+    Cancelling
 }
 

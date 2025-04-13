@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="MagicOnion.Server" Version="7.0.2" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="9.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\shared\Gg.Demo.FrontEnd.Common\Gg.Demo.FrontEnd.Common.csproj" />
+    <ProjectReference Include="..\Gg.Demo.Backend.Abstractions\Gg.Demo.Backend.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
