@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Gc.Demo.Backend.Abstractions\Gg.Demo.Backend.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>
