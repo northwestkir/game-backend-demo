@@ -7,8 +7,9 @@ namespace Gg.Demo.Backend.Core;
 public class MatchmakingGrain(
     OpenMatchFrontendClient client,
     [PersistentState("matchmaking", "matchmakingStore")] IPersistentState<MatchmakingState> matchmakingState,
-    ILogger<MatchmakingGrain> logger) : IMatchmakingGrain
-{
+    ILogger<MatchmakingGrain> logger) :Grain, IMatchmakingGrain
+{   
+
     public async Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request)
     {
         var cancellationToken = CancellationToken.None;
@@ -51,6 +52,12 @@ public class MatchmakingGrain(
         Guid userId = this.GetPrimaryKey();
         logger.LogDebug("Getting matchmaking state for {UserId}", userId);    
         var currentState = matchmakingState.State;
+        
+        if (currentState.State != MatchmakingStatus.DoesNotExist)
+        {
+            logger.LogDebug("No Matchmaking data for {UserId}", userId);
+            return currentState;
+        }
         var ticketId = currentState.TicketId;
         var result = await client.GetMatchmakingState(ticketId, cancellationToken);
         matchmakingState.State = result;
