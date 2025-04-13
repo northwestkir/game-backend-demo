@@ -73,25 +73,25 @@ helm install open-match open-match/open-match \
 2. Deploy the Backend service:
 
 ```bash
-helm install backend deployment/helm/backend -f deployment/minikube/backend-values.yaml --create-namespace 
+helm install backend deployment/helm/backend -f deployment/minikube/backend-values.yaml --create-namespace --namespace demo-game
 ```
 
 3. Deploy the Frontend service:
 
 ```bash
-helm install frontend deployment/helm/frontend -f deployment/minikube/frontend-values.yaml --create-namespace 
+helm install frontend deployment/helm/frontend -f deployment/minikube/frontend-values.yaml --create-namespace --namespace demo-game
 ```
 
 4. Deploy the Matchmaking Director service:
 
 ```bash
-helm install director deployment/helm/mm-director -f deployment/minikube/mm-director-values.yaml --create-namespace 
+helm install director deployment/helm/mm-director -f deployment/minikube/mm-director-values.yaml --create-namespace --namespace demo-matchamaker
 ```
 
 5. Deploy the Matchmaker Function service:
 
 ```bash
-helm install director deployment/helm/mm-function -f deployment/minikube/mm-function-values.yaml --create-namespace 
+helm install director deployment/helm/mm-function -f deployment/minikube/mm-function-values.yaml --create-namespace --namespace demo-matchamaker
 ```
 
 ### Accessing the Services
