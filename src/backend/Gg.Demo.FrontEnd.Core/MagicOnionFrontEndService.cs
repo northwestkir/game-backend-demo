@@ -4,11 +4,14 @@ using Gg.Demo.FrontEnd.Common;
 using MagicOnion;
 using MagicOnion.Server;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gg.Demo.FrontEnd.Core;
 
+[Authorize]
 public class MagicOnionFrontEndService(IClusterClient client, IHttpContextAccessor httpContextAccessor) : ServiceBase<IFrontEndService>, IFrontEndService
 {
+    [Authorize]
     public async UnaryResult<MatchmakingStateDto> GetMatchmakingState()
     {
         var cancellationToken = this.Context.CallContext.CancellationToken;
@@ -26,6 +29,7 @@ public class MagicOnionFrontEndService(IClusterClient client, IHttpContextAccess
         };
     }
 
+    [Authorize]
     public async UnaryResult<MatchmakingStateDto> StartMatchmaking(StartMatchmakingCommand cmd)
     {        
         var userId = GetUserId();
@@ -41,6 +45,7 @@ public class MagicOnionFrontEndService(IClusterClient client, IHttpContextAccess
         };
     }
 
+    [Authorize]
     public async UnaryResult<MatchmakingStateDto> CancelMatchmaking()
     {
         var userId = GetUserId();
