@@ -2,6 +2,7 @@ using Gg.Demo.FrontEnd.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using StackExchange.Redis;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,8 +35,16 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddOrleansClient(orleans => orleans
-    .UseLocalhostClustering(serviceId: "backend", clusterId: "dev"));
+builder.Services.AddOrleansClient(clientBuilder =>
+{
+    clientBuilder.UseRedisClustering(options =>
+    {
+        var it = builder.Configuration.GetValue<string>("Orleans:Clustering:Redis:ConnectionString")
+        ?? throw new InvalidOperationException("OrleansRedis connection string not found");
+        options.ConfigurationOptions = ConfigurationOptions.Parse(it);
+    });
+}
+);
 
 var app = builder.Build();
 

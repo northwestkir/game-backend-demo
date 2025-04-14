@@ -1,27 +1,21 @@
-using System.Net;
 using Gg.Demo.Backend.Core.Matchmaking;
-using Orleans.Configuration;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseOrleans(static siloBuilder =>
 {
-    siloBuilder.UseKubernetesHosting(options => options.ValidateOnStart());
+    if (siloBuilder.Configuration.GetValue<bool>("Orleans:UseKubernetesHosting"))
+        siloBuilder.UseKubernetesHosting(options => options.ValidateOnStart());
+    
+    siloBuilder.UseRedisClustering(options =>
+    {        
+        var it = siloBuilder.Configuration.GetSection("Orleans:Clustering:Redis:ConnectionString").Get<string>()
+            ?? throw new InvalidOperationException("OrleansRedis connection string not found");
+        options.ConfigurationOptions = ConfigurationOptions.Parse(it);
+    });
     
     siloBuilder.AddMemoryGrainStorage("matchmakingStore");
-    siloBuilder.Configure<EndpointOptions>(options =>
-{
-    // Port to use for silo-to-silo
-    options.SiloPort = 11_111;
-    // Port to use for the gateway
-    options.GatewayPort = 30_000;
-    // IP Address to advertise in the cluster
-    options.AdvertisedIPAddress = IPAddress.Parse("172.16.0.42");
-    // The socket used for client-to-silo will bind to this endpoint
-    options.GatewayListeningEndpoint = new IPEndPoint(IPAddress.Any, 40_000);
-    // The socket used by the gateway will bind to this endpoint
-    options.SiloListeningEndpoint = new IPEndPoint(IPAddress.Any, 50_000);
-    });
 });
 
 
