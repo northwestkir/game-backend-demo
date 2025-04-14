@@ -27,4 +27,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: OpenMatch__Backend__Address
-              value: {{ .Values.openmatch.backend.service | quote }}            
+              value: {{ .Values.openmatch.backend.service | quote }}           
+            - name: OpenMatch__FunctionConfig__Host
+              value: {{ .Values.openmatch.functionConfig.host | quote }}
+

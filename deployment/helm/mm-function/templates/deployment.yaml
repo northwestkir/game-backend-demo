@@ -21,10 +21,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.targetPort }}
+              containerPort: 8080
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: OpenMatch_Query__Address
+            - name: OpenMatch__Query__Address
               value: {{ .Values.openmatch.query.address | quote }}

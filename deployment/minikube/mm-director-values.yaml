@@ -1,8 +1,8 @@
+namespace: demo-game
 replicaCount: 1
-namespace: demo-matchmaker
 
 image:
-  repository: gg-demo-director
+  repository: gg-demo-mm-director
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -21,4 +21,6 @@ resources:
 
 openmatch:
   backend:
-    service: "http://open-match-backend.open-match.svc.cluster.local:51505"
+    service: "http://open-match-backend.open-match.svc.cluster.local:50505"
+  functionConfig:
+    host: "mm-function.demo-game"

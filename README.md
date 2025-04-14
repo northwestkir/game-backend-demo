@@ -53,8 +53,11 @@ docker build -t gg-demo-backend:latest -f src/backend/Gg.Demo.Backend.Host/Docke
 docker build -t gg-demo-frontend:latest -f src/backend/Gg.Demo.FrontEnd.Host/Dockerfile .; minikube image load gg-demo-frontend:latest
 
 # Build director image
-docker build -t gg-demo-director:latest -f src/backend/Gg.Demo.Matchmaking.Director/Dockerfile .
-```
+docker build -t gg-demo-director:latest -f src/backend/Gg.Demo.Matchmaking.Director/Dockerfile .; minikube image load gg-demo-director:latest
+
+# Build matchmaking function
+docker build -t gg-demo-function:latest -f src/backend/Gg.Demo.Matchmaking.Function/Dockerfile .; minikube image load gg-demo-function:latest
+
 
 ### Deploying with Helm
 
@@ -85,14 +88,16 @@ helm install frontend deployment/helm/frontend -f deployment/minikube/frontend-v
 4. Deploy the Matchmaking Director service:
 
 ```bash
-helm install director deployment/helm/mm-director -f deployment/minikube/mm-director-values.yaml --create-namespace --namespace demo-matchamaker
+helm install director deployment/helm/mm-director -f deployment/minikube/mm-director-values.yaml --create-namespace --namespace demo-game
 ```
 
 5. Deploy the Matchmaker Function service:
 
 ```bash
-helm install director deployment/helm/mm-function -f deployment/minikube/mm-function-values.yaml --create-namespace --namespace demo-matchamaker
+helm install function deployment/helm/mm-function -f deployment/minikube/mm-function-values.yaml --create-namespace --namespace demo-game
 ```
+
+
 
 ### Accessing the Services
 

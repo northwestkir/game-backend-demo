@@ -8,7 +8,7 @@ public class ProfileRepository : IProfileRepository
     private readonly MatchProfile _pvp;
     public ProfileRepository()
     {
-        _pve = ConfigureProfile("pve", ["sand", "water"], "pve", 2, 4);
+        _pve = ConfigureProfile("pve", ["sand", "water"], "pve", 1, 4);
         _pvp = ConfigureProfile("pvp", ["sand", "water"], "pvp", 2, 8);
     }
     public IEnumerable<MatchProfile> GetProfiles()

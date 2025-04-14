@@ -31,7 +31,7 @@ class Program
 
         try
         {
-            var newMatchmaking = await client.StartMatchmaking(new StartMatchmakingCommand { Map = "map1", GameMode = "tutor", Geo = "nl" });
+            var newMatchmaking = await client.StartMatchmaking(new StartMatchmakingCommand { Map = "map1", GameMode = "pve", Geo = "nl" });
             var result = await client.GetMatchmakingState();
             var cancelled = await client.CancelMatchmaking();
 

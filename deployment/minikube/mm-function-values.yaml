@@ -1,14 +1,14 @@
-namespace: demo-matchmaker
+namespace: demo-game
 replicaCount: 1
 
 image:
-  repository: gg-demo-mm-function
+  repository: gg-demo-function
   tag: latest
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
   targetPort: 80
 
 resources:
@@ -21,4 +21,4 @@ resources:
 
 openmatch:
   query:
-    address: "http://open-match-query.open-match.svc.cluster.local:51503" 
+    address: "http://open-match-query.open-match.svc.cluster.local:50503" 
