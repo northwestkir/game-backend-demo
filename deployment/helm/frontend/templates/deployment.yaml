@@ -36,3 +36,7 @@ spec:
               value: {{ .Values.backend.service | quote }} 
             - name: Orleans__Clustering__Redis__ConnectionString
               value: {{ .Values.orleans.redis.connectionString | quote }}
+            - name: Orleans__ServiceId
+              value: {{ .Values.orleans.serviceId | quote }}
+            - name: Orleans__ClusterId
+              value: {{ .Values.orleans.clusterId | quote }}

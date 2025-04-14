@@ -28,5 +28,7 @@ backend:
   service: "http://backend:80" 
 
 orleans:
+  serviceId: demo-game-backend
+  clusterId: minikube
   redis:
     connectionString: "redis-redis:6379,password=aBu123!v@lg,connectRetry=3,connectTimeout=5000,syncTimeout=5000,defaultDatabase=0,abortConnect=false"

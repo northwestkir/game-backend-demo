@@ -2,6 +2,7 @@ using Gg.Demo.FrontEnd.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using Orleans.Configuration;
 using StackExchange.Redis;
 using System.Text;
 
@@ -37,6 +38,11 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddOrleansClient(clientBuilder =>
 {
+    clientBuilder.Configure<ClusterOptions>(options =>
+    {
+        options.ServiceId = builder.Configuration["Orleans:ServiceId"];
+        options.ClusterId = builder.Configuration["Orleans:ClusterId"];
+    });
     clientBuilder.UseRedisClustering(options =>
     {
         var it = builder.Configuration.GetValue<string>("Orleans:Clustering:Redis:ConnectionString")
@@ -45,6 +51,11 @@ builder.Services.AddOrleansClient(clientBuilder =>
     });
 }
 );
+
+builder.Services.AddOptions<ClusterOptions>().PostConfigure<ILogger<ClusterOptions>>((options,Logger) =>
+{
+    Logger.LogInformation("Cluster options: {ServiceId} {ClusterId}", options.ServiceId, options.ClusterId);
+});
 
 var app = builder.Build();
 

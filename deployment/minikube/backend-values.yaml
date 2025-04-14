@@ -16,7 +16,7 @@ resources:
 
 orleans:
   serviceId: demo-game-backend
-  clusterId: dev 
+  clusterId: minikube 
   gatewayPort: 30000
   siloPort: 11111
   redis:

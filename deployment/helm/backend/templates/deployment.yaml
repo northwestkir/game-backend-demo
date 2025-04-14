@@ -26,10 +26,12 @@ spec:
           ports:
             - name: gateway
               containerPort: {{ .Values.orleans.gatewayPort }}
-              protocol: TCP              
-            - name:   
+              protocol: TCP
+              hostPort: {{ .Values.orleans.gatewayPort }}              
+            - name: silo
               containerPort: {{ .Values.orleans.siloPort }}
               protocol: TCP
+              hostPort: {{ .Values.orleans.siloPort }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
