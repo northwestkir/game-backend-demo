@@ -13,7 +13,7 @@ public class ProfileRepository : IProfileRepository
     }
     public IEnumerable<MatchProfile> GetProfiles()
     {
-        return [_pve, _pvp];
+        return [_pve];
     }
     
     private static MatchProfile ConfigureProfile(string name, string[] maps, string mode, int minPlayers, int maxPlayers)

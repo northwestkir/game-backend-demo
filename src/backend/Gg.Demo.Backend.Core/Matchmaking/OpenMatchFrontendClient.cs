@@ -9,6 +9,7 @@ public class OpenMatchFrontendClient(FrontendService.FrontendServiceClient clien
     //ask: what is missing here?
     public async Task<MatchmakingState> StartMatchmaking(MatchmakingRequest request, CancellationToken cancellationToken)
     {
+        logger.LogInformation("Starting matchmaking for request: {@Request}", request);
         var ticket = new Ticket
         {
             SearchFields = new SearchFields
