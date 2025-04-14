@@ -20,7 +20,7 @@ orleans:
   gatewayPort: 30000
   siloPort: 11111
   redis:
-    connectionString: "redis-redis:6379,password=password,connectRetry=3,connectTimeout=5000,syncTimeout=5000,defaultDatabase=0,abortConnect=false"
+    connectionString: "redis-redis:6379,password=aBu123!v@lg,connectRetry=3,connectTimeout=5000,syncTimeout=5000,defaultDatabase=0,abortConnect=false"
 openmatch:  
   frontend:
     address: "http://open-match-frontend.open-match.svc.cluster.local:51504" 

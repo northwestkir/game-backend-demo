@@ -5,6 +5,9 @@ image:
   tag: 7.2.4
   pullPolicy: IfNotPresent
 
+auth:
+  password: "aBu123!v@lg"  # Change this to a secure password
+
 resources:
   requests:
     cpu: 100m

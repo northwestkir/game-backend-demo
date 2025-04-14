@@ -30,12 +30,17 @@ spec:
             - name: redis-config
               mountPath: /etc/redis/redis.conf
               subPath: redis.conf
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-redis-secret
+                  key: redis-password
           command:
             - redis-server
             - /etc/redis/redis.conf
-          args:
-            - --appendonly
-            - "yes"
+            - --requirepass
+            - $(REDIS_PASSWORD)
       volumes:
         - name: redis-data
           persistentVolumeClaim:
