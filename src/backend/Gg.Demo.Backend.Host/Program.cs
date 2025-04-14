@@ -9,15 +9,14 @@ builder.Host.UseOrleans(static siloBuilder =>
         siloBuilder.UseKubernetesHosting(options => options.ValidateOnStart());
     
     siloBuilder.UseRedisClustering(options =>
-    {        
+    {
         var it = siloBuilder.Configuration.GetSection("Orleans:Clustering:Redis:ConnectionString").Get<string>()
             ?? throw new InvalidOperationException("OrleansRedis connection string not found");
-        options.ConfigurationOptions = ConfigurationOptions.Parse(it);
+        options.ConfigurationOptions = ConfigurationOptions.Parse(it);                
     });
     
     siloBuilder.AddMemoryGrainStorage("matchmakingStore");
 });
-
 
 builder.Services.ConfigureOpenMatchFrontEndClient();
 

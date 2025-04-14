@@ -26,3 +26,7 @@ jwt:
 
 backend:
   service: "http://backend:80" 
+
+orleans:
+  redis:
+    connectionString: "redis-redis:6379,connectRetry=3,connectTimeout=5000,syncTimeout=5000,defaultDatabase=0,abortConnect=false"

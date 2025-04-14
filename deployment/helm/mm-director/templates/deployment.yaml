@@ -26,7 +26,5 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: "Development"
             - name: OpenMatch__Backend__Address
               value: {{ .Values.openmatch.backend.service | quote }}            

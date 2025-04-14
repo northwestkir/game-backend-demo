@@ -26,8 +26,6 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: "Development"
             - name: JWT__KEY
               value: {{ .Values.jwt.key | quote }}
             - name: JWT__ISSUER
@@ -36,3 +34,5 @@ spec:
               value: {{ .Values.jwt.audience | quote }}
             - name: BACKEND__SERVICE
               value: {{ .Values.backend.service | quote }} 
+            - name: Orleans__Clustering__Redis__ConnectionString
+              value: {{ .Values.orleans.redis.connectionString | quote }}

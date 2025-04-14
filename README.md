@@ -47,10 +47,10 @@ First, build the Docker images for all services:
 
 ```bash
 # Build backend image
-docker build -t gg-demo-backend:latest -f src/backend/Gg.Demo.Backend.Host/Dockerfile .
+docker build -t gg-demo-backend:latest -f src/backend/Gg.Demo.Backend.Host/Dockerfile .; minikube image load gg-demo-backend:latest
 
 # Build frontend image
-docker build -t gg-demo-frontend:latest -f src/backend/Gg.Demo.FrontEnd.Host/Dockerfile .
+docker build -t gg-demo-frontend:latest -f src/backend/Gg.Demo.FrontEnd.Host/Dockerfile .; minikube image load gg-demo-frontend:latest
 
 # Build director image
 docker build -t gg-demo-director:latest -f src/backend/Gg.Demo.Matchmaking.Director/Dockerfile .
@@ -130,8 +130,8 @@ To uninstall all components:
 
 ```bash
 # Uninstall game services
-helm uninstall backend -n game-demo
-helm uninstall frontend -n game-demo
+helm uninstall backend -n demo-game
+helm uninstall frontend -n demo-game
 helm uninstall mm-director -n demo-matchmaker
 helm uninstall mm-function -n demo-matchmaker
 

@@ -33,8 +33,6 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: "Development"
             - name: OpenMatchFrontEnd__Address
               value: {{ .Values.openmatch.frontend.address | quote }}
             - name: ORLEANS_SERVICE_ID
@@ -59,3 +57,5 @@ spec:
                   fieldPath: status.podIP
             - name: DOTNET_SHUTDOWNTIMEOUTSECONDS
               value: "120"
+            - name: Orleans__Clustering__Redis__ConnectionString
+              value: {{ .Values.orleans.redis.connectionString | quote }}

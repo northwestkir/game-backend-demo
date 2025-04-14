@@ -26,7 +26,5 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: "Development"
             - name: OpenMatch_Query__Address
               value: {{ .Values.openmatch.query.address | quote }}
