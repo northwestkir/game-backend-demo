@@ -76,7 +76,7 @@ helm install open-match open-match/open-match \
 2. Deploy the Backend service:
 
 ```bash
-helm install backend deployment/helm/backend -f deployment/minikube/backend-values.yaml --create-namespace --namespace demo-game
+helm upgrade --install backend deployment/helm/backend -f deployment/minikube/backend-values.yaml --create-namespace --namespace demo-game
 ```
 
 3. Deploy the Frontend service:

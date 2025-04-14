@@ -13,8 +13,12 @@ public class OpenMatchFrontendClient(FrontendService.FrontendServiceClient clien
         {
             SearchFields = new SearchFields
             {
-                Tags = { request.GameMode, request.Map },
-                StringArgs = { { "geo", request.Geo } }
+                Tags = { request.GameMode, request.Map },                
+                StringArgs = {
+                    { "geo", request.Geo },
+                    { "map", request.Map },
+                    { "mode", request.GameMode }
+                }
             }
         };
 
