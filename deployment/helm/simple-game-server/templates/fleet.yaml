@@ -1,0 +1,31 @@
+apiVersion: "agones.dev/v1"
+kind: Fleet
+metadata:
+  name: {{ include "simple-game-server.fullname" . }}
+  labels:
+    {{- include "simple-game-server.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.fleet.replicas }}
+  template:
+    metadata:
+      labels:
+        {{- include "simple-game-server.labels" . | nindent 8 }}
+    spec:
+      ports:
+        - name: default
+          portPolicy: Dynamic
+          containerPort: {{ .Values.gameServer.port }}
+      template:
+        spec:
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+              env:
+                {{- toYaml .Values.env | nindent 16 }}
+              {{- with .Values.ports }}
+              ports:
+                {{- toYaml . | nindent 16 }}
+              {{- end }} 

@@ -1,6 +1,6 @@
 gameservers:
   namespaces:
-    - demo-game
+    - demo-game-servers
 agones:
   rbacEnabled: true
   featureGates: ""

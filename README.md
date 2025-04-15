@@ -144,10 +144,16 @@ helm uninstall mm-function -n demo-matchmaker
 helm uninstall open-match -n open-match
 ``` 
 
-## Agones
-### Setup
+# Game Server Hosting
+## Agones Setup
 ```bash
+kubectl create namespace demo-game-servers
 helm repo add agones https://agones.dev/chart/stable
 helm repo update
-helm install gh-agones --namespace agones-system -f .\deployment\minikube\agones-values.yaml agones/agones --create-namespace
+helm upgrade gh-agones --namespace agones-system -f ./deployment/minikube/agones-values.yaml agones/agones --install --create-namespace
+```
+
+## Simple Game Server
+```bash
+helm upgrade simple-game-server deployment/helm/simple-game-server -f ./deployment/minikube/simple-game-server-values.yaml --namespace demo-game-servers --install
 ```
