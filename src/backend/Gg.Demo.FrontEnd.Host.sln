@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Matchmaking", "Gg.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Allocator.Abstractions", "Gg.Demo.Allocator.Abstractions\Gg.Demo.Allocator.Abstractions.csproj", "{0AE5DBC5-63A9-4622-A78A-A26783D37C47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.SimpleGameServer.Host", "Gg.Demo.SimpleGameServer.Host\Gg.Demo.SimpleGameServer.Host.csproj", "{CF2DB405-097F-4AB7-A961-4289648EEAA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{0AE5DBC5-63A9-4622-A78A-A26783D37C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AE5DBC5-63A9-4622-A78A-A26783D37C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AE5DBC5-63A9-4622-A78A-A26783D37C47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2DB405-097F-4AB7-A961-4289648EEAA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2DB405-097F-4AB7-A961-4289648EEAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2DB405-097F-4AB7-A961-4289648EEAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2DB405-097F-4AB7-A961-4289648EEAA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{EE1EDA29-7C93-4A66-AD58-317D47E325B4} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
 		{58646792-305C-4D98-A20C-2FC4E5AEA3E7} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
 		{4796314D-DF7D-4E7B-8F0A-EF401521BF2A} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
+		{CF2DB405-097F-4AB7-A961-4289648EEAA1} = {2C59778B-6662-4E09-BE21-E8AE60AD9667}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D891195-BB26-431F-B112-561E5E4D993D}
