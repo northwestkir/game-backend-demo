@@ -1,20 +1,15 @@
 apiVersion: "agones.dev/v1"
 kind: Fleet
 metadata:
-  name: {{ include "simple-game-server.fullname" . }}
-  labels:
-    {{- include "simple-game-server.labels" . | nindent 4 }}
+  name: {{ .Chart.Name }}
 spec:
   replicas: {{ .Values.fleet.replicas }}
   template:
-    metadata:
-      labels:
-        {{- include "simple-game-server.labels" . | nindent 8 }}
     spec:
       ports:
-        - name: default
+        - name: udp
           portPolicy: Dynamic
-          containerPort: {{ .Values.gameServer.port }}
+          containerPort: 7654
       template:
         spec:
           containers:

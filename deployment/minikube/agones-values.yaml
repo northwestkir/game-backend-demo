@@ -1,10 +1,4 @@
 gameservers:
   namespaces:
     - demo-game-servers
-agones:
-  rbacEnabled: true
-  featureGates: ""
-  allocator:
-    enabled: true
-    disableMTLS: true
-    disableTLS: true
+    - default

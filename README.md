@@ -57,7 +57,7 @@ docker build -t gg-demo-director:latest -f src/backend/Gg.Demo.Matchmaking.Direc
 
 # Build matchmaking function
 docker build -t gg-demo-function:latest -f src/backend/Gg.Demo.Matchmaking.Function/Dockerfile .; minikube image load gg-demo-function:latest
-
+```
 
 ### Deploying with Helm
 
@@ -154,6 +154,10 @@ helm upgrade gh-agones --namespace agones-system -f ./deployment/minikube/agones
 ```
 
 ## Simple Game Server
+
 ```bash
+# Build backend image
+docker build -t gg-demo-simple-game-server:latest -f src/backend/Gg.Demo.SimpleGameServer.Host/Dockerfile .; minikube image load gg-demo-simple-game-server:latest
+# deploy to k8s
 helm upgrade simple-game-server deployment/helm/simple-game-server -f ./deployment/minikube/simple-game-server-values.yaml --namespace demo-game-servers --install
 ```

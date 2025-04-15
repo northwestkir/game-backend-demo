@@ -1,11 +1,9 @@
 apiVersion: "autoscaling.agones.dev/v1"
 kind: FleetAutoscaler
 metadata:
-  name: {{ include "simple-game-server.fullname" . }}
-  labels:
-    {{- include "simple-game-server.labels" . | nindent 4 }}
+  name: {{ .Chart.Name }}-autoscaler
 spec:
-  fleetName: {{ include "simple-game-server.fullname" . }}
+  fleetName: {{ .Chart.Name }}
   policy:
     type: Buffer
     buffer:

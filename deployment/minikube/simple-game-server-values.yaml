@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: simple-game-server
+  repository: gg-demo-simple-game-server
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -16,7 +16,7 @@ fleet:
   replicas: 2
 
 autoscaler:
-  bufferSize: 2
+  bufferSize: 1
   minReplicas: 1
   maxReplicas: 10
 
