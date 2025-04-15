@@ -2,9 +2,6 @@
   "profiles": {
     "Gg.Demo.SimpleGameServer.Host": {
       "commandName": "Project"
-    },
-    "Container (Dockerfile)": {
-      "commandName": "Docker"
     }
   }
 }

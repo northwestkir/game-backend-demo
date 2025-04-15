@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gg.Demo.Allocator.Abstractions\Gg.Demo.Allocator.Abstractions.csproj" />
+    <ProjectReference Include="..\Gg.Demo.Allocator.Agones\Gg.Demo.Allocator.Agones.csproj" />
     <ProjectReference Include="..\Gg.Demo.Matchmaking\Gg.Demo.Matchmaking.csproj" />
   </ItemGroup>
 

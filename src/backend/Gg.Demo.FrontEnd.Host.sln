@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.SimpleGame.Client",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.FrontEnd.Client", "..\client\Gg.Demo.FrontEnd.Client\Gg.Demo.FrontEnd.Client.csproj", "{7FB0350E-4016-4AA0-9AE7-E6084EE1C1F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gg.Demo.Allocator.Agones", "Gg.Demo.Allocator.Agones\Gg.Demo.Allocator.Agones.csproj", "{B2909592-0609-48D1-8873-C30D86901265}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{7FB0350E-4016-4AA0-9AE7-E6084EE1C1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB0350E-4016-4AA0-9AE7-E6084EE1C1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB0350E-4016-4AA0-9AE7-E6084EE1C1F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2909592-0609-48D1-8873-C30D86901265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2909592-0609-48D1-8873-C30D86901265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2909592-0609-48D1-8873-C30D86901265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2909592-0609-48D1-8873-C30D86901265}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
