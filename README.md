@@ -143,3 +143,11 @@ helm uninstall mm-function -n demo-matchmaker
 # Uninstall OpenMatch
 helm uninstall open-match -n open-match
 ``` 
+
+## Agones
+### Setup
+```bash
+helm repo add agones https://agones.dev/chart/stable
+helm repo update
+helm install gh-agones --namespace agones-system -f .\deployment\minikube\agones-values.yaml agones/agones --create-namespace
+```
