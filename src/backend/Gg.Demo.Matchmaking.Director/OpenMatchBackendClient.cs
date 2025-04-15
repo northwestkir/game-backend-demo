@@ -54,8 +54,12 @@ public class OpenMatchBackendClient(
         }
     }
 
-    private MatchInfo Convert(FetchMatchesResponse match)
+    private static MatchInfo Convert(FetchMatchesResponse match)
     {
-        throw new NotImplementedException();
+        return new MatchInfo
+        {
+            MatchId = match.Match.MatchId,
+            Players = match.Match.Tickets.Select(p => new PlayerInfo { TicketId = p.Id }).ToList(),            
+        };
     }
 }

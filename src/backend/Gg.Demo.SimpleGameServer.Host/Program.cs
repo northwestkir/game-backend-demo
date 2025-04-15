@@ -8,6 +8,7 @@ var builder = Host.CreateDefaultBuilder(args)
     {
         services.AddHostedService<AgonesService>();
         services.AddSingleton<IAgonesSDK>(sp => new AgonesSDK());
+
         services.AddHostedService<UdpGameServerService>();
         services.AddOptions<UdpGameServerServiceOptions>().BindConfiguration("GameServer").ValidateOnStart().Validate(options => options.Port > 0);
     });
