@@ -1,6 +1,6 @@
 namespace Gg.Demo.Allocator.Abstractions;
 
-public class GameServer
+public class GameServerInfo
 {
-    public string Endpoint { get; internal set; }
+    public string Endpoint { get; init; }
 }
